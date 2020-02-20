@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<style>
+.wrapper{
+display:inline-block;
+width:100%
+}
+.wrapper::before.wrapper::after{
+content:"";
+display:table;
+
+}
+*{
+margin:0;
+padding:0;
+}
+body{
+font-size:22px;
+background-color:#000;
+}
+
+.head{
+
+background-color:green;
+height:100px;
+}
+
+
+.sec{
+background-color:green;
+height:100px;
+float:left;
+width:60%;
+margin:5px;
+}
+
+.aside{
+background-color:green;
+height:100px;
+float:right;
+width:20%;
+margin:5px;
+}
+
+.foot{
+background-color:green;
+height:100px;
+}
+
+</style>
+<header class="head">header</header>
+<section class="wrapper">
+  <section class="sec">section</section>
+  <aside class="aside">aside</aside>
+</section>
+<footer class="foot">footer</footer>
+
+</body>
+</html>
