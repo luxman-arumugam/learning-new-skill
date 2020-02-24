@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <title>List of Tickets</title>
+   </head>
+   <style>
+    .marginset::before, .marginset::after {
+        content: '';
+        clear: both;
+        display: table;
+     }
+     .setlimitleft{
+        float:left;
+        margin: 15px;
+     }
+     .pagingright{
+        float:right;
+     }
+      .entity {
+      background-color: grey;
+      border: 15px black;
+      padding: 50px;
+      margin:2mm;
+      }
+      .btn {
+      margin:2mm;
+      color: black;
+      padding: 7px 14px;
+      font-size: 14px;
+      cursor: pointer;
+      }
+   </style>
+   <script>
+      window.onload = function() {
+      pageLoad();getPerPage();
+      }
+      var pageNumber= getPageNumber() ;
+      var page_limit= getPerPage();
+      
+      function getPageNumber() {
+          var url_string = window.location.href;
+          var url = new URL(url_string);
+          var c = url.searchParams.get("page");
+          return c || 1;
+      }
+      function getPerPage() {
+          var url_string = window.location.href;
+          var url = new URL(url_string);
+          var c = url.searchParams.get("page_limit");
+          return c || 10;
+         
+      }
+      function getPer(limit){
+        page_limit=limit.options[limit.selectedIndex].value;
+        console.log(page_limit);
+        }
+      
+      function pageLoad()
+      { 
+          var html = '';
+          var url ="http://localhost:8080/portal/tickets?pageNumber=";
+          url=url+pageNumber+"&pageLimit="+page_limit;
+          console.log(url);
+      
+          pagemanager();
+      
+          window.history.pushState({}, '', "listOfTickets?page="+pageNumber+"&page_limit="+page_limit);
+      
+          document.getElementById("pgnotop").innerHTML = "page:"+pageNumber;
+          document.getElementById("pgnobottom").innerHTML = "page:"+pageNumber;
+      
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                  var tickets = JSON.parse(this.responseText);
+                  for (var i = tickets.length - 1; i >= 0; i--) {
+                      html +='<div class=entity>'
+                      html += '<h2>'+tickets[i].subject+'</h2>'
+                      html += '<h3>Id  ='+tickets[i].id+'</h3>'
+                      html += '<h3>Status  ='+tickets[i].status+'</h3>'
+                      html += '<h3>Priority ='+tickets[i].priority+'</h3>'
+                      html += '<h3>Requester id='+tickets[i].requester_id+'</h3>'
+                      html += '<h3>Created at='+tickets[i].created_at+'</h3>'
+                      html +='</div>'
+      
+                  }
+                      document.getElementById("demo").innerHTML = html;
+                      
+              }
+          };
+          xhttp.open("GET",url , true);
+          xhttp.send();
+      }
+      function nextPage() {
+          pageNumber++;        
+          pageLoad();
+      }
+      function prevPage() {
+          pageNumber--;
+          pageLoad();
+      }
+      function pagemanager()
+      {
+          if(pageNumber==1){
+              document.getElementById("prev").disabled=true;
+              document.getElementById("prev2").disabled=true;}
+          else
+              {document.getElementById("prev").disabled=false;
+              document.getElementById("prev2").disabled=false;}
+      }
+      
+   </script>
+   <body>
+      <div id="page-wrap">
+         <div class="w3-container">
+            <h2>Welcome to the Ticket Portal</h2>
+            <p>Select from the below given functions:</p>
+            <div class="w3-bar w3-light-grey">
+               <a href="/portal/createTicket" class="w3-bar-item w3-button">Create a Ticket</a>
+               <a href="/portal/updateTicket" class="w3-bar-item w3-button">Update a Ticket</a>
+               <a href="/portal/deleteTicket" class="w3-bar-item w3-button">Delete a Ticket</a>
+               <div class="w3-dropdown-hover">
+                  <button class="w3-button">Get Ticket</button>
+                  <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                     <a href="/portal/ticketById" class="w3-bar-item w3-button">Get Ticket By Id</a>
+                     <a href="/portal/listOfTickets" class="w3-bar-item w3-button">Get List of Tickets</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div>
+         <div class="marginset" id='display_list'>
+            <div class="setlimitleft">
+               <label id="per_page1">Per Page:</label>
+               <select id="per_page1" name="per_page1" onchange="getPer(this);pageLoad();">
+                  <option value="10" selected="selected">10</option>
+                  <option value="20">20</option>
+                  <option value="40">40</option>
+                  <option value="80">80</option>
+                  <option value="100">100</option>
+                  <option value="120">120</option>
+                  <option value="140">140</option>
+                  <option value="160">160</option>
+                  <option value="180">180</option>
+                  <option value="200">200</option>
+               </select>
+            </div>
+            <div class="pagingright">
+               <button id="prev" class="btn" onclick="prevPage()">PREV</button>
+               <span id="pgnotop"></span>
+               <button class="btn" onclick="nextPage()">NEXT</button>
+            </div>
+         </div>
+         <div id="demo"></div>
+         <div class="marginset">
+         <div class="setlimitleft">
+               <label id="per_page2">Per Page:</label>
+               <select id="per_page2" name="per_page2" onchange="getPer(this);pageLoad();">
+                  <option value="10" selected="selected">10</option>
+                  <option value="20">20</option>
+                  <option value="40">40</option>
+                  <option value="80">80</option>
+                  <option value="100">100</option>
+                  <option value="120">120</option>
+                  <option value="140">140</option>
+                  <option value="160">160</option>
+                  <option value="180">180</option>
+                  <option value="200">200</option>
+               </select>
+            </div>
+         <div class="pagingright">
+            <button id="prev2" class="btn" onclick="prevPage()">PREV</button>
+            <span id="pgnobottom"></span>
+            <button class="btn" onclick="nextPage()">NEXT</button>
+         </div>
+     </div>
+      </div>
+   </body>
+</html>
