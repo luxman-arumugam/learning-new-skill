@@ -120,11 +120,13 @@
 	float: left;
 	width: 70%;
 	height: auto;
+	padding-top: 10px;
 }
 
 .wrapper-content-sidebar .content .wrapper-content .wrapper .detail p {
 	color: #606060;
 	font-size: 20px;
+	padding-top: 10px;
 }
 
 .wrapper-content-sidebar .content .wrapper-content .wrapper .detail a {
@@ -149,6 +151,7 @@
 	background-color: #D3D3D3;
 	right: 0;
 	position: absolute;
+	overflow-y: auto;
 
 }
 
@@ -201,7 +204,7 @@
 	left: 0;
 	right: 0;
 	color: #FFFFFF;
-	position: absolute;
+	position: fixed;
 	text-align: center;
 	overflow:hidden;
 }
