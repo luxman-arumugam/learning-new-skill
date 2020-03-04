@@ -1,0 +1,159 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+.h {
+    position:fixed;
+	top: 0;
+	float: left;
+	background-color: black;
+	height: 8%;
+	width: 100%;
+	clear:both;
+}
+
+.headnum {
+	color: orange;
+	font-size: 55px;
+}
+
+.headtext {
+	color: white;
+	font-size: 40px;
+}
+
+ul.nav {
+
+	position:fixed;
+	top: 8%;
+	list-style-type: none;
+	height: auto;
+	background-color: grey;
+	width: 100%;
+	z-index: 1;
+	height:5%;
+	clear: both;
+}
+
+li.nav {
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	float:left;
+	border-right:2px solid black;
+	
+}
+
+li.nav:hover {
+	background-color: darkorange;
+}
+.entity {
+	position:absolute;
+	top:13%;
+	left:0;
+	bottom:2.5%;
+	width: calc(100% - 380px);
+	height: 80.5%;
+	overflow-y: scroll;
+	float: left;
+	clear:both;
+
+	/*z-index: -1;*/
+}
+
+.eachentity {
+	float: left;
+	padding:20px;
+	min-width: 25%;
+	width:calc(100% - 60px);
+}
+div.boxy {
+	width: 150px;
+	float: left;
+}
+.box {
+	width: 150px;
+	height: 150px;
+	background-color: grey;
+}
+
+div.content {
+	width: calc(100% - 160px);
+	float: right;
+}
+
+p.content {
+	width: 60%;
+}
+
+h1.content {
+	margin-bottom: 10px;
+	font-size: 23px;
+}
+.sidenav {
+	margin-top: 0;
+	width: 350px;
+	float: right;
+	padding-left: 20px;
+	padding-right: 10px;
+	background-color:lightgrey;
+	height: 80.5%;
+	position: fixed;
+	right:0;
+	top:13%;
+	min-width: 300px;
+}
+
+p.sidenav {
+
+	width: 75%;
+	float: center;
+}
+
+h1.sidenavhead {
+	font-size: 22px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.orange {
+	color: orange;
+}
+
+ul.sidenavlist {
+	list-style-type: none;
+}
+
+hr {
+	float: right;
+	width: 98.5%;
+	margin-bottom: 15px;
+}
+.entity hr{
+	float: right;
+	width: 98.5%;
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+
+li.sidebar {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.f {
+	position: fixed;
+	bottom: 0;
+	float: left;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+	background-color: #999;
+	height: 2.5%;
+	width: 100%;
+}
+
+.entity  hr:last-child {
+	width:0;
+
+}
