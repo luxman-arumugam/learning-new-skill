@@ -32,6 +32,13 @@ body {
 	overflow-x: auto;
 }
 
+.navbar .wrapper-navber {
+	height: auto;
+	width: 100%;
+	display: block;
+	clear: both;
+}
+
 .navbar .navbar-logo {
 	font-size: 70px;
 	float: left;
@@ -46,9 +53,9 @@ body {
 .navbar .navbar-content {
 	display: inline-block;
 	position: relative;
-	float: left;
-	padding-left: 500px;
+	float: right;
 	padding-top: 20px;
+	padding-right: 70px;
 }
 
 .navbar .navbar-content ul {
